@@ -380,8 +380,10 @@ private final class AspectRatioButton: UIButton {
   convenience init() {
     self.init(frame: .zero)
     
-    setTitleColor(.init(white: 1, alpha: 0.5), for: .normal)
-    setTitleColor(.white, for: .selected)
+      setTitleColor(.systemBlue, for: .normal)
+    //setTitleColor(.white, for: .selected)
+      setTitleColor(.white, for: .selected)
+
     titleLabel?.font = .systemFont(ofSize: 12)
     
   }
@@ -395,7 +397,9 @@ private final class AspectRatioButton: UIButton {
       // Fallback on earlier versions
     }
     
-    backdropView.backgroundColor = .init(white: 1, alpha: 0.5)
+    //backdropView.backgroundColor = .init(white: 1, alpha: 0.5)
+      backdropView.backgroundColor = .systemBlue
+
     
     titleEdgeInsets = .init(top: -2, left: 6, bottom: -2, right: 6)
   }
@@ -502,6 +506,8 @@ private final class AspectRatioDirectionButton: UIControl {
     guard isEnabled else {
       shapeLayer.strokeColor = UIColor(white: 0.6, alpha: 0.3).cgColor
       shapeLayer.fillColor = UIColor(white: 0, alpha: 0.3).cgColor
+        //shapeLayer.fillColor = CGColor(red: 0, green: 0, blue: 255, alpha: 1)
+
       iconImageView.isHidden = true
       return
     }
@@ -509,7 +515,9 @@ private final class AspectRatioDirectionButton: UIControl {
     if isSelected {
             
       shapeLayer.strokeColor = UIColor(white: 0.6, alpha: 1).cgColor
-      shapeLayer.fillColor = UIColor(white: 0.6, alpha: 1).cgColor
+   // shapeLayer.fillColor = UIColor(white: 0, alpha: 0.6).cgColor
+
+        shapeLayer.fillColor = UIColor(.blue).cgColor
       iconImageView.isHidden = false
       
     } else {

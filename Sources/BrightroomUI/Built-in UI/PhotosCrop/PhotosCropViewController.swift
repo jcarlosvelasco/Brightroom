@@ -152,27 +152,35 @@ public final class PhotosCropViewController: UIViewController {
     
     editingStack.start()
     cropView.isAutoApplyEditingStackEnabled = true
-    view.backgroundColor = .black
+      view.backgroundColor = .clear
+    //view.backgroundColor = .black
     view.clipsToBounds = true
     
     aspectRatioButton&>.do {
       $0.setImage(UIImage(named: "aspectratio", in: bundle, compatibleWith: nil), for: .normal)
-      $0.tintColor = .systemGray
+      //$0.tintColor = .systemGray
+        $0.tintColor = .systemBlue
+
       $0.addTarget(self, action: #selector(handleAspectRatioButton), for: .touchUpInside)
     }
     
     resetButton&>.do {
       // TODO: Localize
       $0.setTitle(localizedStrings.button_reset_title, for: .normal)
-      $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-      $0.setTitleColor(UIColor.systemYellow, for: .normal)
+      //$0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        $0.setTitleColor(UIColor.systemBlue, for: .normal)
+
+      //$0.setTitleColor(UIColor.systemYellow, for: .normal)
       $0.addTarget(self, action: #selector(handleResetButton), for: .touchUpInside)
       $0.isHidden = true
     }
     
     rotateButton&>.do {
       $0.setImage(UIImage(named: "rotate", in: bundle, compatibleWith: nil), for: .normal)
-      $0.tintColor = .systemGray
+      //$0.tintColor = .systemGray
+        $0.tintColor = .systemBlue
+
       $0.addTarget(self, action: #selector(handleRotateButton), for: .touchUpInside)
     }
     
@@ -181,19 +189,23 @@ public final class PhotosCropViewController: UIViewController {
       $0.addArrangedSubview(resetButton)
       $0.addArrangedSubview(aspectRatioButton)
       $0.distribution = .equalSpacing
+      $0.alignment = .center
     }
 
     cancelButton&>.do {
       $0.setTitle(localizedStrings.button_cancel_title, for: .normal)
       $0.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-      $0.setTitleColor(UIColor.white, for: .normal)
+      //$0.setTitleColor(UIColor.white, for: .normal)
+        $0.setTitleColor(UIColor.systemBlue, for: .normal)
+
       $0.addTarget(self, action: #selector(handleCancelButton), for: .touchUpInside)
     }
         
     doneButton&>.do {
       $0.setTitle(localizedStrings.button_done_title, for: .normal)
       $0.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-      $0.setTitleColor(UIColor.systemYellow, for: .normal)
+      //$0.setTitleColor(UIColor.systemYellow, for: .normal)
+        $0.setTitleColor(UIColor.systemBlue, for: .normal)
       $0.setTitleColor(UIColor.darkGray, for: .disabled)
       $0.addTarget(self, action: #selector(handleDoneButton), for: .touchUpInside)
     }
@@ -370,7 +382,9 @@ public final class PhotosCropViewController: UIViewController {
       UIViewPropertyAnimator.init(duration: 0.4, dampingRatio: 1) { [self] in
         if value {
           aspectRatioControl?.alpha = 1
-          aspectRatioButton.tintColor = .systemYellow
+          //aspectRatioButton.tintColor = .systemYellow
+            aspectRatioButton.tintColor = .systemBlue
+
         } else {
           aspectRatioControl?.alpha = 0
           aspectRatioButton.tintColor = .systemGray
@@ -415,6 +429,7 @@ public final class PhotosCropViewController: UIViewController {
   
   @objc private func handleCancelButton() {
     handlers.didCancel(self)
+      handleResetButton()
   }
   
   @objc private func handleDoneButton() {
